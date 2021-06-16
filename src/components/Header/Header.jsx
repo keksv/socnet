@@ -7,7 +7,7 @@ const Header = (props) => {
         <img src='https://w7.pngwing.com/pngs/482/944/png-transparent-peercoin-cryptocurrency-proof-of-stake-bitcoin-coin-text-trademark-logo.png' />
 
         <div className={s.loginBlock}>
-            {props.isAuth? props.login
+            {props.isAuth? <div>{props.login} - <button onClick={props.logout}>Log out</button> </div>
             : <NavLink to={'/login'}>Login</NavLink>}
         </div>
     </header>
