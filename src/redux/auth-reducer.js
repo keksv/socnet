@@ -36,7 +36,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(getAuthUserData());
     } else {
-        let message = response.data.messager.length > 0 ? response.data.message[0] : "Error"
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Error"
         dispatch(stopSubmit("login", {_error: message}));
     }
 }
@@ -44,7 +44,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     let response = await authAPI.logout()
     if (response.data.resultCode === 0) {
-        dispatch(getAuthUserData(null, null, null, false));
+        dispatch(setAuthUserData(null, null, null, false));
     }
 }
 
